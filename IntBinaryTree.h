@@ -2,6 +2,9 @@
 #ifndef INTBINARYTREE_H
 #define INTBINARYTREE_H
 
+#include <string>
+using std::string;
+
 // The IntBinaryTree class manages a binary tree of integers.
 class IntBinaryTree {
 private:
