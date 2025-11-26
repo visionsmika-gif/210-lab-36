@@ -19,7 +19,11 @@ Your code successfully creates a BST from the records and outputs it using the m
 Your code's menu is functional.*/
 
 int main() {
-    
+    IntBinaryTree BST;      // Note: the class IntBinaryTree has been modified to hold string values rather than ints
+
+    BST.insertNode("Test String 1");
+    BST.insertNode("Test String 2");
+    BST.insertNode("Test String 3");
 
     return 0;
 }
