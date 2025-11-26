@@ -4,6 +4,8 @@
 #include "IntBinaryTree.h"
 using namespace std;
 
+int getUserChoice();
+
 int main() {
     IntBinaryTree BST;      // Note: the class IntBinaryTree has been modified to hold string values rather than ints
     const string FILE_NAME = "codes.txt";
@@ -20,10 +22,28 @@ int main() {
         BST.insertNode(code);
     }
     codesFile.close();
-    
-    // Output BST
-    BST.displayInOrder();
 
+    // Create a menu to add, delete, search, and modify records
+    int userChoice;
+    do {
+        userChoice = getUserChoice();
+
+
+    } while (userChoice != 0);
 
     return 0;
+}
+
+int getUserChoice() {
+    int userChoice;
+    cout << "BST Menu:\n";
+    cout << "[1] Insert a node\n";
+    cout << "[2] Search for a node\n";
+    cout << "[3] Delete a node\n";
+    cout << "[4] Display BST\n";
+    cout << "[0] Quit\n";
+    cin >> userChoice;
+
+    return userChoice;
+
 }
