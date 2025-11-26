@@ -5,8 +5,10 @@
 using namespace std;
 
 int getUserChoice();
-void insertNode(IntBinaryTree& BST);
-void deletNode(IntBinaryTree& BST);
+void insertRecord(IntBinaryTree& BST);
+void deleteRecord(IntBinaryTree& BST);
+void modifyRecord(IntBinaryTree& BST);
+void displayBST(const IntBinaryTree& BST);
 
 int main() {
     IntBinaryTree BST;      // Note: the class IntBinaryTree has been modified to hold string values rather than ints
@@ -32,13 +34,13 @@ int main() {
         cin.ignore();
 
         if (userChoice == 1) {          // [1] Insert a node
-            insertNode(BST);
+            insertRecord(BST);
         }
         else if (userChoice == 2) {     // [2] Delete a node
-            deleteNode(BST);
+            deleteRecord(BST);
         }
         else if (userChoice == 3) {     // [3] Modify a node
-
+            modifyRecord(BST);
         }
         else if (userChoice == 4) {     // [4] Display BST
 
@@ -53,18 +55,19 @@ int main() {
 int getUserChoice() {
     int userChoice;
     cout << "BST Menu:\n";
-    cout << "[1] Insert a node\n";
-    cout << "[2] Delete a node\n";
-    cout << "[3] Modify a node\n";
+    cout << "[1] Insert a record\n";
+    cout << "[2] Delete a record\n";
+    cout << "[3] Modify a record\n";
     cout << "[4] Display BST\n";
     cout << "[0] Quit\n";
+    cout << "Choice --> ";
     cin >> userChoice;
 
     return userChoice;
 
 }
 
-void insertNode(IntBinaryTree& BST) {
+void insertRecord(IntBinaryTree& BST) {
     string val;
     cout << "Enter a string value to insert: ";
     getline(cin, val);
@@ -72,13 +75,42 @@ void insertNode(IntBinaryTree& BST) {
     cout << val << " successfully inserted!\n";
 }
 
-void deleteNode(IntBinaryTree& BST) {
+void deleteRecord(IntBinaryTree& BST) {
     string val;
     cout << "Enter a string value to delete: ";
     getline(cin, val);
 
-    if 
+    if (BST.searchNode(val)) {
+        BST.remove(val);
+        cout << val << " successfully deleted!\n";
+    }
+    else {
+        cout << "Could not find " << val << ". Nothing deleted.\n";
+    }
+}
 
-    BST.remove(val);
-    cout << val << " successfully deleted!\n";
+void modifyRecord(IntBinaryTree& BST) {
+    string oldVal;
+    cout << "Enter a string value to modify: ";
+    getline(cin, oldVal);
+
+    if (BST.searchNode(oldVal)) {
+        BST.remove(oldVal);
+        
+        cout << "Enter the new string value: ";
+        string newVal;
+        getline(cin, newVal);
+
+        BST.insertNode(newVal);
+        cout << newVal << " successfully inserted!\n";
+
+    }
+    else {
+        cout << "Could not find " << oldVal << ". Nothing modified.\n";
+    }
+}
+
+void displayBST(const IntBinaryTree& BST) {
+    cout << "Enter which display mode to use:\n";
+
 }
