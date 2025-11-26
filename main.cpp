@@ -8,6 +8,7 @@ using namespace std;
 int getUserChoice();
 void insertRecord(IntBinaryTree& BST);
 void deleteRecord(IntBinaryTree& BST);
+void searchForRecord(IntBinaryTree& BST);
 void modifyRecord(IntBinaryTree& BST);
 void displayBST(const IntBinaryTree& BST);
 
@@ -33,16 +34,19 @@ int main() {
     do {
         userChoice = getUserChoice();
         cin.ignore();
-        if (userChoice == 1) {          // [1] Insert a node
+        if (userChoice == 1) {          // [1] Insert a record
             insertRecord(BST);
         }
-        else if (userChoice == 2) {     // [2] Delete a node
+        else if (userChoice == 2) {     // [2] Delete a record
             deleteRecord(BST);
         }
-        else if (userChoice == 3) {     // [3] Modify a node
+        else if (userChoice == 3) {     // [3] Search for a record
+            searchForRecord(BST);
+        }
+        else if (userChoice == 4) {     // [4] Modify a record
             modifyRecord(BST);
         }
-        else if (userChoice == 4) {     // [4] Display BST
+        else if (userChoice == 5) {     // [5] Display BST
             displayBST(BST);
         }
         cout << "\n";
@@ -102,6 +106,20 @@ void deleteRecord(IntBinaryTree& BST) {
     }
 }
 
+// Function to search for a record from the BST.
+void searchForRecord(IntBinaryTree& BST) {
+    string val;
+    cout << "Enter a string value to search for: ";
+    getline(cin, val);
+
+    if (BST.searchNode(val)) {
+        cout << val << " successfully found!\n";
+    }
+    else {
+        cout << "Could not find " << val << ".\n";
+    }
+}
+
 // Function to modify a record from the BST.
 // It deletes an existing record and inserts a new one.
 void modifyRecord(IntBinaryTree& BST) {
@@ -119,7 +137,7 @@ void modifyRecord(IntBinaryTree& BST) {
         getline(cin, newVal);
 
         BST.insertNode(newVal);
-        cout << newVal << " successfully inserted!\n";
+        cout << "Record successfully modified!\n";
     }
     else {
         cout << "Could not find " << oldVal << ". Nothing modified.\n";

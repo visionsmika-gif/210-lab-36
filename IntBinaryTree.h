@@ -123,7 +123,6 @@ void IntBinaryTree::deleteNode(const string& val, TreeNode *&nodePtr) {
       makeDeletion(nodePtr);
 }
 
-
 // makeDeletion takes a reference to a pointer to the node 
 // that is to be deleted. The node is removed and the      
 // branches of the tree below the node are reattached.     
