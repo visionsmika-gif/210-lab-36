@@ -1,3 +1,6 @@
+// COMSC-210 | Lab 36 | Mika Aquino
+// IDE used: Visual Studio 2022
+
 #include <iostream>
 #include <fstream>
 #include <string>
