@@ -4,6 +4,7 @@
 #include "IntBinaryTree.h"
 using namespace std;
 
+// Functions for the menu
 int getUserChoice();
 void insertRecord(IntBinaryTree& BST);
 void deleteRecord(IntBinaryTree& BST);
@@ -11,10 +12,10 @@ void modifyRecord(IntBinaryTree& BST);
 void displayBST(const IntBinaryTree& BST);
 
 int main() {
-    IntBinaryTree BST;      // Note: the class IntBinaryTree has been modified to hold string values rather than ints
+    IntBinaryTree BST;                      // Note: the class IntBinaryTree has been modified to hold string values rather than ints.
     const string FILE_NAME = "codes.txt";
     
-    // Populate the BST with file
+    // Populate the BST with the file.
     ifstream codesFile;
     codesFile.open(FILE_NAME);
     if (!codesFile) {
@@ -43,7 +44,7 @@ int main() {
             modifyRecord(BST);
         }
         else if (userChoice == 4) {     // [4] Display BST
-
+            displayBST(BST);
         }
 
         cout << "\n";
@@ -60,8 +61,14 @@ int getUserChoice() {
     cout << "[3] Modify a record\n";
     cout << "[4] Display BST\n";
     cout << "[0] Quit\n";
-    cout << "Choice --> ";
-    cin >> userChoice;
+
+    do {
+        cout << "Choice --> ";
+        cin >> userChoice;
+        if (userChoice < 0 || userChoice > 4) {
+            cout << "ERROR: Invalid choice. Please enter a number between 0-4.\n";
+        }
+    } while (userChoice < 0 || userChoice > 4);
 
     return userChoice;
 
@@ -111,6 +118,26 @@ void modifyRecord(IntBinaryTree& BST) {
 }
 
 void displayBST(const IntBinaryTree& BST) {
-    cout << "Enter which display mode to use:\n";
+    int userChoice;
+    cout << "\nEnter which display mode to use:\n";
+    cout << "[1] Inorder\n";
+    cout << "[2] Preorder\n";
+    cout << "[3] Postorder\n";
+    do {
+        cout << "Choice --> ";
+        cin >> userChoice;
+        if (userChoice < 1 || userChoice > 3) {
+            cout << "ERROR: Invalid choice. Please enter a number between 1-3.\n";
+        }
+    } while (userChoice < 1 || userChoice > 3);
 
+    if (userChoice == 1) {
+        BST.displayInOrder();
+    }
+    else if (userChoice == 2) {
+        BST.displayPreOrder();
+    }
+    else if (userChoice == 3) {
+        BST.displayPostOrder();
+    }
 }
